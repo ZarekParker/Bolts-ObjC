@@ -581,11 +581,10 @@
 			isa = PBXGroup;
 			children = (
 				81D646E21D2CA0E000690609 /* Configurations */,
-				8E9C3CEE17DE9DE000427E62 /* Bolts */,
-				8E8C8ED717F23C3B00E3F1C7 /* BoltsTests */,
-				1EC3016618CDAA8400D06D07 /* BoltsTestUI */,
 				8E9C3CEB17DE9DE000427E62 /* Frameworks */,
 				8E9C3CEA17DE9DE000427E62 /* Products */,
+				FF240139251FF91B00762720 /* Sources */,
+				FF24013A251FF92C00762720 /* Tests */,
 			);
 			indentWidth = 4;
 			sourceTree = "<group>";
@@ -641,6 +640,23 @@
 				81D647431D2CA52300690609 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FF240139251FF91B00762720 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				8E9C3CEE17DE9DE000427E62 /* Bolts */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		FF24013A251FF92C00762720 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				1EC3016618CDAA8400D06D07 /* BoltsTestUI */,
+				8E8C8ED717F23C3B00E3F1C7 /* BoltsTests */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1289,7 +1305,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
-				INFOPLIST_FILE = "BoltsTestUI/BoltsTestUI-Info.plist";
+				INFOPLIST_FILE = "Tests/BoltsTestUI/BoltsTestUI-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bolts.ios.testapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1314,7 +1330,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
-				INFOPLIST_FILE = "BoltsTestUI/BoltsTestUI-Info.plist";
+				INFOPLIST_FILE = "Tests/BoltsTestUI/BoltsTestUI-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bolts.ios.testapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1370,6 +1386,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 81D646E41D2CA0E000690609 /* Bolts-iOS.xcconfig */;
 			buildSettings = {
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Bolts/Resources/Info.plist";
+				MODULEMAP_FILE = "$(SRCROOT)/Sources/Bolts/Resources/iOS.modulemap";
 			};
 			name = Debug;
 		};
@@ -1377,6 +1395,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 81D646E41D2CA0E000690609 /* Bolts-iOS.xcconfig */;
 			buildSettings = {
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Bolts/Resources/Info.plist";
+				MODULEMAP_FILE = "$(SRCROOT)/Sources/Bolts/Resources/iOS.modulemap";
 			};
 			name = Release;
 		};

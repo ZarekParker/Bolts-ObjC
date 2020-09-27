@@ -27,6 +27,6 @@
 # -----------------------------------------------------------------------------
 # Build docs
 #
-. $BOLTS_SCRIPT/build_documentation.sh
+# . $BOLTS_SCRIPT/build_documentation.sh
 
 common_success

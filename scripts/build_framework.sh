@@ -118,21 +118,22 @@ function xcode_build_target() {
     -target "${3}" \
     -sdk $1 \
     -configuration "${2}" \
+    ${4} \
     SYMROOT="$BOLTS_BUILD" \
     CURRENT_PROJECT_VERSION="$BOLTS_VERSION_FULL" \
     build \
     || die "Xcode build failed for platform: ${1}."
 }
 
-xcode_build_target "iphonesimulator" "${BUILDCONFIGURATION}" "Bolts-iOS"
+xcode_build_target "iphonesimulator" "${BUILDCONFIGURATION}" "Bolts-iOS" EXCLUDED_ARCHS="arm64"
 xcode_build_target "iphoneos" "${BUILDCONFIGURATION}" "Bolts-iOS"
 xcode_build_target "macosx" "${BUILDCONFIGURATION}" "Bolts-macOS"
 if [ $WATCHOS -eq 1 ]; then
-  xcode_build_target "watchsimulator" "${BUILDCONFIGURATION}" "Bolts-watchOS"
+  xcode_build_target "watchsimulator" "${BUILDCONFIGURATION}" "Bolts-watchOS" EXCLUDED_ARCHS="arm64"
   xcode_build_target "watchos" "${BUILDCONFIGURATION}" "Bolts-watchOS"
 fi
 if [ $TVOS -eq 1 ]; then
-  xcode_build_target "appletvsimulator" "${BUILDCONFIGURATION}" "Bolts-tvOS"
+  xcode_build_target "appletvsimulator" "${BUILDCONFIGURATION}" "Bolts-tvOS" EXCLUDED_ARCHS="arm64"
   xcode_build_target "appletvos" "${BUILDCONFIGURATION}" "Bolts-tvOS"
 fi
 
@@ -192,6 +193,13 @@ if [ $WATCHOS -eq 1 ]; then
 fi
 
 if [ $TVOS -eq 1 ]; then
+  echo "HELLO THIS"
+  # "$LIPO" \
+  #   -remove arm64 \
+  #   "$BUILD_DIR/${CONFIGURATION}-iphonesimulator/${PRODUCT_NAME}/${PROJECT_NAME}" \
+  #   -output "$BUILD_DIR/${CONFIGURATION}-iphonesimulator/${PRODUCT_NAME}/${PROJECT_NAME}" \
+  # || die "failed to remove arm64 from simulator"
+
   # Combine tvOS/Simulator binaries into a single universal binary.
   "$LIPO" \
     -create \
